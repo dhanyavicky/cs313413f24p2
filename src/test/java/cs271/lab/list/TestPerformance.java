@@ -14,11 +14,11 @@ public class TestPerformance {
   // running time is in the tens of seconds)
   // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
-  private final int SIZE = 10;
+  private final int SIZE = 10000; // Adjust the size according to your needs
 
   // TODO choose this value in such a way that you can observe an actual effect
   // for increasing problem sizes
-  private final int REPS = 1000000;
+  private final int REPS = 1000000; // Number of repetitions to see noticeable performance differences
 
   private List<Integer> arrayList;
 
@@ -26,8 +26,8 @@ public class TestPerformance {
 
   @Before
   public void setUp() throws Exception {
-    arrayList = new ArrayList<Integer>(SIZE);
-    linkedList = new LinkedList<Integer>();
+    arrayList = new ArrayList<>(SIZE);
+    linkedList = new LinkedList<>();
     for (var i = 0; i < SIZE; i++) {
       arrayList.add(i);
       linkedList.add(i);
@@ -40,35 +40,50 @@ public class TestPerformance {
     linkedList = null;
   }
 
+  private void measurePerformance(String operation, Runnable task) {
+    long startTime = System.nanoTime();
+    task.run();
+    long endTime = System.nanoTime();
+    long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
+    System.out.println(operation + " took " + duration + " ms");
+  }
+
   @Test
   public void testLinkedListAddRemove() {
+    measurePerformance("LinkedList Add/Remove", () -> {
     for (var r = 0; r < REPS; r++) {
       linkedList.add(0, 77);
       linkedList.remove(0);
     }
+  });
   }
 
   @Test
   public void testArrayListAddRemove() {
-    for (var r = 0; r < REPS; r++) {
-      arrayList.add(0, 77);
-      arrayList.remove(0);
-    }
+    measurePerformance("ArrayList Add/Remove", () -> {
+      for (var r = 0; r < REPS; r++) {
+        arrayList.add(0, 77);
+        arrayList.remove(0);
+      }
+    });
   }
-
   @Test
   public void testLinkedListAccess() {
-    var sum = 0L;
-    for (var r = 0; r < REPS; r++) {
-      sum += linkedList.get(r % SIZE);
-    }
+    measurePerformance("LinkedList Access", () -> {
+      var sum = 0L;
+      for (var r = 0; r < REPS; r++) {
+        sum += linkedList.get(r % SIZE);
+      }
+    });
   }
 
   @Test
   public void testArrayListAccess() {
+    measurePerformance("ArrayList Access", () -> {
     var sum = 0L;
     for (var r = 0; r < REPS; r++) {
       sum += arrayList.get(r % SIZE);
-    }
+     }
+    });
   }
 }
