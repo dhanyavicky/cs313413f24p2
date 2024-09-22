@@ -89,11 +89,11 @@ public class TestPerformance {
 
   @Test
   public void testArrayListAccess() {
-    measurePerformance("ArrayList Access", () -> {
-    var sum = 0L;
-    for (var r = 0; r < REPS; r++) {
-      sum += arrayList.get(r % SIZE);
-     }
+    measureTime("ArrayList Access", () -> {
+      long sum = 0;
+      for (var r = 0; r < REPS; r++) {
+        sum += arrayList.get(r % SIZE);
+      }
     });
   }
 }
