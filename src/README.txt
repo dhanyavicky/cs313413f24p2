@@ -6,7 +6,20 @@ TestIterator
   However, if you we are adding or removing elements frequently during iteration, or accessing elements by index, you would notice differences in performance:
   ArrayList might be slower when removing elements from the beginning or middle of the list, as this requires shifting the remaining elements.
   LinkedList, would handle removals more efficiently, especially for elements at the beginning or middle, since it simply adjusts pointers without shifting elements.
+
     // TODO fix the expected values in the assertions below
+       assertEquals(77, i.next().intValue());
+        assertTrue(i.hasNext());
+        assertEquals(44, i.next().intValue());
+        assertTrue(i.hasNext());
+        assertEquals(77, i.next().intValue());
+        assertTrue(i.hasNext());
+        assertEquals(55, i.next().intValue());
+        assertTrue(i.hasNext());
+        assertEquals(77, i.next().intValue());
+        assertTrue(i.hasNext());
+        assertEquals(66, i.next().intValue());
+        assertFalse(i.hasNext());
     // TODO what happens if you use list.remove(Integer.valueOf(77))?
     // TODO using assertEquals and List.of, express which values are left in the list
     // TODO use an iterator and a while loop to compute the average (mean) of the values
