@@ -70,25 +70,31 @@ public class TestPerformance {
 
   @Test
   public void testArrayListAddRemove() {
-    for (var r = 0; r < REPS; r++) {
-      arrayList.add(0, 77);
-      arrayList.remove(0);
-    }
+    measureTime("ArrayList Add/Remove", () -> {
+      for (var r = 0; r < REPS; r++) {
+        arrayList.add(0, 77);
+        arrayList.remove(0);
+      }
+    });
   }
 
   @Test
   public void testLinkedListAccess() {
-    var sum = 0L;
-    for (var r = 0; r < REPS; r++) {
-      sum += linkedList.get(r % SIZE);
-    }
+    measureTime("LinkedList Access", () -> {
+      long sum = 0;
+      for (var r = 0; r < REPS; r++) {
+        sum += linkedList.get(r % SIZE);
+      }
+    });
   }
 
   @Test
   public void testArrayListAccess() {
-    var sum = 0L;
-    for (var r = 0; r < REPS; r++) {
-      sum += arrayList.get(r % SIZE);
-    }
+    measureTime("ArrayList Access", () -> {
+      long sum = 0;
+      for (var r = 0; r < REPS; r++) {
+        sum += arrayList.get(r % SIZE);
+      }
+    });
   }
 }
