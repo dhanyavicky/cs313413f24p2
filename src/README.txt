@@ -78,7 +78,8 @@ TestList
     // TODO in a single statement using addAll and List.of,
 list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
     // TODO in a single statement using removeAll and List.of,
-
+ list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
+    list.removeAll(List.of(33, 44, 55, 66)); //remove these elements
     // TODO in a single statement using retainAll and List.of,
     // TODO use the set method to change specific elements in the list
     // TODO fix the arguments in the subList method so that the assertion
