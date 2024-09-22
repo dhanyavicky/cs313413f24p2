@@ -9,16 +9,17 @@ import org.junit.Test;
 
 public class TestPerformance {
 
+
   // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
   // (choose in conjunction with REPS below up to an upper limit where the clock
   // running time is in the tens of seconds)
   // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
-  private static final int[] SIZES = {10, 100, 1000, 10000, 100000};
+  private static final int[] SIZES = {10, 100, 1000, 10000, 100000}; //setting size to test
 
   // TODO choose this value in such a way that you can observe an actual effect
   // for increasing problem sizes
-  private final int REPS = 1000000; // Number of repetitions to see noticeable performance differences
+  private final int REPS = 1000000; // Number of repetitions for each test
 
   private List<Integer> arrayList;
 
