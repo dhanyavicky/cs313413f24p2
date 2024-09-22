@@ -20,3 +20,9 @@ TestList
     // TODO in a single statement using retainAll and List.of,
     // TODO use the set method to change specific elements in the list
     // TODO fix the arguments in the subList method so that the assertion
+
+TestPerformance
+
+  // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
+  // TODO (optional) refactor to DRY
+  // TODO choose this value in such a way that you can observe an actual effect
