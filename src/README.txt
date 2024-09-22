@@ -93,8 +93,49 @@ list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
 TestPerformance
 
   // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
+   For size 10
+ArrayList Access took 6 ms
+LinkedList Add/Remove took 13 ms
+LinkedList Access took 6 ms
+ArrayList Add/Remove took 11 ms
+> Task :test
+BUILD SUCCESSFUL in 877ms
+2 actionable tasks: 2 executed
+7:07:46 AM: Execution finished ':test'.
+
+   For size 100
+   ArrayList Access took 1 ms
+   LinkedList Add/Remove took 7 ms
+   LinkedList Access took 2 ms
+   ArrayList Add/Remove took 4 ms
+   > Task :test
+   BUILD SUCCESSFUL in 940ms
+   2 actionable tasks: 2 executed
+   7:07:27 AM: Execution finished ':test'.
+
+  For size 1000
+  ArrayList Access took 1 ms
+  LinkedList Add/Remove took 4 ms
+  LinkedList Access took 13 ms
+  ArrayList Add/Remove took 5 ms
+  > Task :test
+  BUILD SUCCESSFUL in 967ms
+  2 actionable tasks: 2 executed
+  7:07:05 AM: Execution finished ':test'.
+
+ For size 10000
+  ArrayList Access took 2 ms
+  LinkedList Add/Remove took 7 ms
+  LinkedList Access took 84 ms
+  ArrayList Add/Remove took 23 ms
+  > Task :test
+  BUILD SUCCESSFUL in 1s
+  2 actionable tasks: 2 executed
+  7:05:35 AM: Execution finished ':test'.
   // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
   LinkedList when you frequently need to add or remove elements at the beginning of the list.
   As the list size increases, ArrayList generally outperforms LinkedList in most scenarios except when adding/removing elements at the beginning.
   // TODO choose this value in such a way that you can observe an actual effect
+ REPS = Math.max(10000, 1000000 / SIZE); // Calculate REPS here
+     initializeLists();
