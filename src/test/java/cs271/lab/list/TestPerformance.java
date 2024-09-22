@@ -40,7 +40,13 @@ public class TestPerformance {
     linkedList = null;
   }
 
-
+  private void measurePerformance(String operation, Runnable task) {
+    long startTime = System.nanoTime();
+    task.run();
+    long endTime = System.nanoTime();
+    long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
+    System.out.println(operation + " took " + duration + " ms");
+  }
 
   @Test
   public void testLinkedListAddRemove() {
