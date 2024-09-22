@@ -41,13 +41,22 @@ public class TestPerformance {
     linkedList = null;
   }
 
-  private void measurePerformance(String operation, Runnable task) {
-    long startTime = System.nanoTime();
-    task.run();
-    long endTime = System.nanoTime();
-    long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
-    System.out.println(operation + " took " + duration + " ms");
+  // DRY refactor: Helper method to measure and print execution time
+  private void measureTime(String testName, Runnable test) {
+    long startTime = System.currentTimeMillis();
+    test.run();
+    long endTime = System.currentTimeMillis();
+    System.out.println(testName + " took " + (endTime - startTime) + " ms");
   }
+
+
+//  private void measurePerformance(String operation, Runnable task) {
+//    long startTime = System.nanoTime();
+//    task.run();
+//    long endTime = System.nanoTime();
+//    long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
+//    System.out.println(operation + " took " + duration + " ms");
+//  }
 
   @Test
   public void testLinkedListAddRemove() {
