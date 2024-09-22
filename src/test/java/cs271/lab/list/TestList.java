@@ -30,7 +30,7 @@ public class TestList {
       //  list = new ArrayList<>();
      // }
     //}
- // }
+  }
 
   @After
   public void tearDown() throws Exception {

@@ -83,7 +83,12 @@ list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
     // TODO in a single statement using retainAll and List.of,
     list.retainAll(List.of(77));
     // TODO use the set method to change specific elements in the list
+    list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
+        list.set(1, 99); // change the element at index 1 to 99
+        list.set(3, 99); // change the element at index 3 to 99
+        list.set(5, 99); // change the element at index 5 to 99
     // TODO fix the arguments in the subList method so that the assertion
+    assertEquals(List.of(44, 77, 55), list.subList(2, 5)); //correct indices for subList
 
 TestPerformance
 
