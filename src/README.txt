@@ -66,9 +66,19 @@ TestList
         assertEquals(77, list.get(3).intValue()); // Element at index 3 is 77
         assertEquals(List.of(33, 77, 44, 77, 55, 77, 66), list);
     // TODO fix the expected values in the assertions below
+    assertEquals(6, list.size());
+        assertEquals(1, list.indexOf(77));
+        assertEquals(3, list.lastIndexOf(77));
     // TODO using containsAll and List.of (see above),
+    // 1) assert that list contains all five different numbers added
+        assertTrue(list.containsAll(List.of(33, 77, 44, 55, 66))); // checks that the list contains all the elements [33, 77, 44, 55, 66]
+        // 2) assert that list does not contain all of 11, 22, and 33
+        assertFalse(list.containsAll(List.of(11, 22, 33))); // checks that the list does not contain [11, 22, 33]
+        //fail("Not yet implemented"); // remove this line when done
     // TODO in a single statement using addAll and List.of,
+list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
     // TODO in a single statement using removeAll and List.of,
+
     // TODO in a single statement using retainAll and List.of,
     // TODO use the set method to change specific elements in the list
     // TODO fix the arguments in the subList method so that the assertion
