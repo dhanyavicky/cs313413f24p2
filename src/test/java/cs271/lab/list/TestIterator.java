@@ -36,7 +36,13 @@ public class TestIterator {
 
   @Test
   public void testNonempty() {
-
+    list.add(33);
+    list.add(77);
+    list.add(44);
+    list.add(77);
+    list.add(55);
+    list.add(77);
+    list.add(66);
     final var i = list.iterator();
     assertTrue(i.hasNext());
     assertEquals(33, i.next().intValue());
