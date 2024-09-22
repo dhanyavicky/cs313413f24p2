@@ -70,7 +70,7 @@ public class TestPerformance {
 
   @Test
   public void testArrayListAddRemove() {
-    measurePerformance("ArrayList Add/Remove", () -> {
+    measureTime("ArrayList Add/Remove", () -> {
       for (var r = 0; r < REPS; r++) {
         arrayList.add(0, 77);
         arrayList.remove(0);
