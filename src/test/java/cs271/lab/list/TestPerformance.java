@@ -9,30 +9,39 @@ import org.junit.Test;
 
 public class TestPerformance {
 
-
   // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
   // (choose in conjunction with REPS below up to an upper limit where the clock
   // running time is in the tens of seconds)
   // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
-  private static final int[] SIZES = {10, 100, 1000, 10000, 100000}; //setting size to test
+  private final int SIZE = 10;
 
   // TODO choose this value in such a way that you can observe an actual effect
   // for increasing problem sizes
-  private final int REPS = 1000000; // Number of repetitions for each test
+  private int REPS; // Declare REPS without initialization here
 
   private List<Integer> arrayList;
-
   private List<Integer> linkedList;
 
-  @Before
-  public void setUp() throws Exception {
+  // Helper method to initialize both lists
+  private void initializeLists() {
     arrayList = new ArrayList<>(SIZE);
     linkedList = new LinkedList<>();
     for (var i = 0; i < SIZE; i++) {
       arrayList.add(i);
       linkedList.add(i);
     }
+  }
+  @Before
+  public void setUp() throws Exception {
+    REPS = Math.max(10000, 1000000 / SIZE); // Calculate REPS here
+    initializeLists();
+//    arrayList = new ArrayList<Integer>(SIZE);
+//    linkedList = new LinkedList<Integer>();
+//    for (var i = 0; i < SIZE; i++) {
+//      arrayList.add(i);
+//      linkedList.add(i);
+//    }
   }
 
   @After
@@ -49,15 +58,6 @@ public class TestPerformance {
     System.out.println(testName + " took " + (endTime - startTime) + " ms");
   }
 
-
-//  private void measurePerformance(String operation, Runnable task) {
-//    long startTime = System.nanoTime();
-//    task.run();
-//    long endTime = System.nanoTime();
-//    long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
-//    System.out.println(operation + " took " + duration + " ms");
-//  }
-
   @Test
   public void testLinkedListAddRemove() {
     measureTime("LinkedList Add/Remove", () -> {
@@ -70,30 +70,25 @@ public class TestPerformance {
 
   @Test
   public void testArrayListAddRemove() {
-    measureTime("ArrayList Add/Remove", () -> {
-      for (var r = 0; r < REPS; r++) {
-        arrayList.add(0, 77);
-        arrayList.remove(0);
-      }
-    });
+    for (var r = 0; r < REPS; r++) {
+      arrayList.add(0, 77);
+      arrayList.remove(0);
+    }
   }
+
   @Test
   public void testLinkedListAccess() {
-    measureTime("LinkedList Access", () -> {
-      long sum = 0;
-      for (var r = 0; r < REPS; r++) {
-        sum += linkedList.get(r % SIZE);
-      }
-    });
+    var sum = 0L;
+    for (var r = 0; r < REPS; r++) {
+      sum += linkedList.get(r % SIZE);
+    }
   }
 
   @Test
   public void testArrayListAccess() {
-    measureTime("ArrayList Access", () -> {
-      long sum = 0;
-      for (var r = 0; r < REPS; r++) {
-        sum += arrayList.get(r % SIZE);
-      }
-    });
+    var sum = 0L;
+    for (var r = 0; r < REPS; r++) {
+      sum += arrayList.get(r % SIZE);
+    }
   }
 }
