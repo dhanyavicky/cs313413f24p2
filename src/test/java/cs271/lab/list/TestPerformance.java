@@ -14,7 +14,7 @@ public class TestPerformance {
   // running time is in the tens of seconds)
   // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
-  private final int SIZE = 10;
+  private final int SIZE = 100;
 
   // TODO choose this value in such a way that you can observe an actual effect
   // for increasing problem sizes
