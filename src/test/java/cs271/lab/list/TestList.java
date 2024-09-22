@@ -19,7 +19,18 @@ public class TestList {
     list = new ArrayList<>();
     // TODO also try with a LinkedList - does it make any difference?
     //can change to new LinkedList<>(); - to test with LinkedList
-  }
+
+    //public void setUp() throws Exception {
+      // Use a system property to choose between ArrayList and LinkedList
+      //String listType = System.getProperty("listType", "ArrayList"); // Default to ArrayList
+
+      //if ("LinkedList".equalsIgnoreCase(listType)) {
+      //  list = new LinkedList<>();
+     // } else {
+      //  list = new ArrayList<>();
+     // }
+    //}
+ // }
 
   @After
   public void tearDown() throws Exception {

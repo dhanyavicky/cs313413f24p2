@@ -21,16 +21,50 @@ TestIterator
         assertEquals(66, i.next().intValue());
         assertFalse(i.hasNext());
     // TODO what happens if you use list.remove(Integer.valueOf(77))?
+    the remove method attempts to remove the first occurrence of the element 77 from the list
+    list.remove(Integer.valueOf(77))
+    The Integer.valueOf(77) creates an Integer object with the value 77.
+    The remove(Object o) method is then called with this object.
+    The list will be traversed, and the first occurrence of the integer 77 will be removed from the list.
     // TODO using assertEquals and List.of, express which values are left in the list
+    the list should no longer contain any 77
     // TODO use an iterator and a while loop to compute the average (mean) of the values
-
+      final var i = list.iterator();
+          while (i.hasNext()){
+            sum += i.next();
+            n++;
 TestList
 
     // TODO also try with a LinkedList - does it make any difference?
+    public void setUp() throws Exception {
+        // Use a system property to choose between ArrayList and LinkedList
+        String listType = System.getProperty("listType", "ArrayList"); // Default to ArrayList
+
+        if ("LinkedList".equalsIgnoreCase(listType)) {
+            list = new LinkedList<>();
+        } else {
+            list = new ArrayList<>();
+        }
+    }
     // TODO fix the expected values in the assertions below
+    assertEquals(1, list.size()); //one element in the list
+        assertEquals(77, list.get(0).intValue()); //first element is 77
     // TODO write assertions using
+    assertFalse(list.contains(77)); //list does not contain 77 initially
+        list.add(77);
+        assertTrue(list.contains(77));
     // TODO fix the expected values in the assertions below
+    assertEquals(3, list.size()); //list size is 3
+        assertEquals(0, list.indexOf(77)); //first 77 is at index 0
+        assertEquals(77, list.get(1).intValue()); // second element is 77
+        assertEquals(2, list.lastIndexOf(77)); // last 77 is at index 2
     // TODO fix the expected values in the assertions below
+    assertEquals(7, list.size()); // list size is 7
+        assertEquals(1, list.indexOf(77)); //First 77 is at index 1
+        assertEquals(5, list.lastIndexOf(77)); // Last 77 is at index 5
+        assertEquals(44, list.get(2).intValue()); // Element at index 2 is 44
+        assertEquals(77, list.get(3).intValue()); // Element at index 3 is 77
+        assertEquals(List.of(33, 77, 44, 77, 55, 77, 66), list);
     // TODO fix the expected values in the assertions below
     // TODO using containsAll and List.of (see above),
     // TODO in a single statement using addAll and List.of,
