@@ -94,4 +94,7 @@ TestPerformance
 
   // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
   // TODO (optional) refactor to DRY
+  // which of the two lists performs better as the size increases?
+  LinkedList when you frequently need to add or remove elements at the beginning of the list.
+  As the list size increases, ArrayList generally outperforms LinkedList in most scenarios except when adding/removing elements at the beginning.
   // TODO choose this value in such a way that you can observe an actual effect
