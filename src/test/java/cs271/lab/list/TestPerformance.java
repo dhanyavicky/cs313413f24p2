@@ -79,8 +79,8 @@ public class TestPerformance {
   }
   @Test
   public void testLinkedListAccess() {
-    measurePerformance("LinkedList Access", () -> {
-      var sum = 0L;
+    measureTime("LinkedList Access", () -> {
+      long sum = 0;
       for (var r = 0; r < REPS; r++) {
         sum += linkedList.get(r % SIZE);
       }
