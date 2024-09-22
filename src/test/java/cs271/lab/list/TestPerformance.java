@@ -60,12 +60,12 @@ public class TestPerformance {
 
   @Test
   public void testLinkedListAddRemove() {
-    measurePerformance("LinkedList Add/Remove", () -> {
-    for (var r = 0; r < REPS; r++) {
-      linkedList.add(0, 77);
-      linkedList.remove(0);
-    }
-  });
+    measureTime("LinkedList Add/Remove", () -> {
+      for (var r = 0; r < REPS; r++) {
+        linkedList.add(0, 77);
+        linkedList.remove(0);
+      }
+    });
   }
 
   @Test
